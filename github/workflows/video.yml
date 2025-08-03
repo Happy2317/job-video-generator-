@@ -28,3 +28,21 @@ jobs:
     - name: Delete old videos
       run: find outputs/ -type f -name "*.mp4" -mtime +7 -delete
       
+jobs:
+  slsa-provenance:
+    name: Generate SLSA Provenance
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate provenance
+        uses: slsa-framework/slsa-generic-generator@v1.3.0
+        with:
+          artifact-path: ./output/job-video.mp4
+          artifact-type: binary
+          upload-assets: true
+          
