@@ -2,7 +2,9 @@ name: Job Video Generator
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # Tous les jours à 9h UTC
+    - cron: '0 5 * * *'   # 3 vidéos à 5h UTC
+    - cron: '0 12 * * *'  # 3 vidéos à 12h UTC
+    - cron: '0 19 * * *'  # 4 vidéos à 19h UTC
   workflow_dispatch:
 
 jobs:
